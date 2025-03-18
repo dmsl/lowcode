@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="apple-mobile-web-app-title" content="Auto Insights Dashboard">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-transculent">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Auto Insights Dashboard">
+    <meta name="author" content="Auto Insights Dashboard">
+
+    <link rel="icon" type="image/png" href="logo.png">
+
+    <title>Auto Insights Dashboard | Show your OBD data on Android Auto</title>
+    <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/freelancer.css" rel="stylesheet">
+    <link href="css/sporthere.css" rel="stylesheet">
+    
+    <!-- Custom Fonts -->
+    <link href="font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="../maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet"
+          type="text/css">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body id="page-top" class="index">
+
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#page-top">UCY No-code launch page</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="page-scroll">
+                    <a href="#page-top">Home</a>
+                </li>
+                <li class="page-scroll">
+                    <a href="#how-works">How it Works</a>
+                </li>
+                <li class="page-scroll">
+                    <a href="#about">About</a>
+                </li>
+               <li class="page-scroll">
+                    <a href="#contact">@</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+
+<!-- Header -->
+<header>
+    <div class="container landing" id="landing-top">
+        <div class="row">
+            <div class="promo">
+                <div class="wrap">
+                    <div class="container col-md-12 ">
+                        <!-- <div class="row"> -->
+                    <div class="promo-text col-md-6">
+                        <div class="promo-title">No-Code Development showcase</div>
+                        <p class="promo">Data driven applications that are built on minimal to <b>No-code</b></p>
+                        <div class="mdbt">                    
+                            <button type="button" class="btn btn-info btn-lg modalbt" data-toggle="modal" data-target="#myModal">Our releases   </button>
+                        </div>
+                        <div>
+                            <a target="_blank" href="https://github.com/dmsl/lowcode" class="promo-button" style="margin: 2px;">Github</a>
+                        <p></p>
+                        </div>
+                    <!-- promo-text -->
+                      
+                </div>
+                <div class="col-md-6">
+                    <img id="mobile-img" src="img/backfrontfinal2.png" style="display: block; width: 150%; height: auto;" />
+                </div>
+             <!-- </div>  -->
+        </div> 
+                <!-- wrap -->
+            </div>
+            <!-- promo -->
+        </div>
+    </div>
+</header>
+<!-- Demo Section -->
+<section id="demo">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2>Demo</h2>
+                <hr class="star-primary">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe id="demo-iframe" class="embed-responsive-item" src="https://www.appsheet.com/start/4e8f848a-e6ff-4395-8d66-5292352dbf05?platform=desktop" allowfullscreen></iframe>
+                </div>
+                <div class="text-center" style="margin-top: 10px;">
+                    <button id="prev-demo" class="btn btn-default" onclick="changeDemo(-1)">
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </button>
+                    <button id="next-demo" class="btn btn-default" onclick="changeDemo(1)">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    var demos = [
+        "https://www.appsheet.com/start/4e8f848a-e6ff-4395-8d66-5292352dbf05?platform=desktop",
+        "https://vgate.cloud/edbticdt2024/"
+    ];
+    var currentDemoIndex = 0;
+    var iframe = document.getElementById("demo-iframe");
+
+    function changeDemo(direction) {
+        currentDemoIndex += direction;
+
+        if (currentDemoIndex < 0) {
+            currentDemoIndex = demos.length - 1;
+        } else if (currentDemoIndex >= demos.length) {
+            currentDemoIndex = 0;
+        }
+
+        iframe.src = demos[currentDemoIndex];
+    }
+</script>
+<!-- How it works Section -->
+<section id="how-works">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h2>How it works</h2>
+        <hr class="cogs-primary">
+      </div>
+    </div>
+
+
+    <div style="text-align: center; margin-top: 20px" class="row">
+      <div>
+	    <div class="col-md-4">
+        </div>
+		<div class="col-md-4">
+
+          <h3 style="margin: 0;">Applications that run on the cloud</h3>
+          <p>
+            <font color=red><b>+</b></font> Built using No-Code tools (Appsheets)<br>
+            <font color=red><b>+</b></font> Google Sheets as a database<br>
+            <font color=red><b>+</b></font> No SQL required<br>
+            <font color=red><b>+</b></font> Minimal Scripting for data (Google App scripts)<br>
+            <font color=red><b>+</b></font> Cross-platform Compatibility<br>
+            <font color=red><b>+</b></font> Outsourced Hosting<br>
+          </p>
+        
+	    </div>
+  </div>
+
+</div>
+</section>
+
+<!-- About Section -->
+<section class="success" id="about">    
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 style="color:white">About</h2>
+                <hr class="info-light">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-lg-offset-2">
+                <p>
+                    NoCode-UCY is the home to applications that are developed using No-Code tools; with the goal of exploring the feasibility of Easy-to-Use tools for "Civilian Developers" 
+                </p>
+		<p>The applications are developed by students and researchers of <a href="http://dmsl.cs.ucy.ac.cy/" target="_blank">Data Management Systems Laboratory (DMSL)</a>, Department of Computer Science at the University of Cyprus.
+               </p>
+                <p>To contact us<a
+                        href=#contact> here</a> or at <a href="mailto:lowcode@ucy.ac.cy">lowcode@ucy.ac.cy</a>.
+				</p>
+            </div>
+            <div class="col-lg-4">
+                <p>Our releases are free to use and available on both web browsers and the Google Play Store for your convenience. Source code can be found on our   <a target="_blank" href="https://github.com/dmsl/lowcode">lowcode GitHub page</a>.</p>
+            </div>
+        </div>
+
+</section>
+
+<!-- Team Section -->
+<section class="success" id="team">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 style="color:white">Team</h2>
+                <hr class="team-light">
+            </div>
+        </div>
+
+        <div class="row">
+
+	<div class="col-lg-4 col-lg-offset-2">
+		<div class="team-member">
+			<div id="tm-dz" class="team-img">
+			</div>
+			<div class="team-content">
+				<a href="http://www.cs.ucy.ac.cy/~dzeina/" target="_blank">
+				   <h2>Demetris Zeinalipour</h2>
+				</a>
+				<h3>Project Leader</h3>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-md-6 col-lg-6">
+        <div class="team-member">
+            <div id="tm-ds" class="team-img">
+            </div>
+            <div class="team-content">
+                <h2>MARKOS FIKARDOS </h2>
+                <h3>DEVELOPER</h3>
+                <p></p>
+            </div>
+        </div>
+	</div>
+</div>
+
+</section>
+
+<!-- Contact Section -->
+<section id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2>Contact Us</h2>
+                <hr class="envelope-primary">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
+                <form name="sentMessage" id="contactForm" novalidate>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label>Name</label>
+                            <input type="text" class="form-control" placeholder="Name" id="name" required
+                                   data-validation-required-message="Please enter your name.">
+
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label>Email Address</label>
+                            <input type="email" class="form-control" placeholder="Email Address" id="email" required
+                                   data-validation-required-message="Please enter your email address.">
+
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label>Message</label>
+                            <textarea rows="5" class="form-control" placeholder="Message" id="message" required
+                                      data-validation-required-message="Please enter a message."></textarea>
+
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <br>
+
+                    <div id="success"></div>
+                    <div class="row">
+                        <div class="form-group col-xs-12">
+                            <button type="submit" class="btn btn-success btn-lg" style="background-color:#324d5b; border-color: #324d5b;">Send</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- instruction modal -->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Our releases</h4>
+            </div>
+            <div class="modal-body">
+                <div class="container col-md-12">
+                    <div class="row">
+                        
+                            <div class="container col-md-12">
+                                <p>
+                                    1) CheapFuelCY
+                                </p>
+                            </div>
+                                <div class="col-md-6 instr_img" style="margin-bottom: 20px;">
+                                    <img src="img/screenshot-1.webp">
+                                </div>
+                                <div class="col-md-6 instr_img" style="margin-bottom: 20px;">
+                                    <img src="img/screenshot-2.webp">
+                                </div>
+                                <div class="col-md-8 col-md-offset-2" >
+                                    <p>
+                                        Daily information on Cyprus fuel prices. Documents analytics of fuel price trends in order to evaluate fuel price fluctuations.
+                                    </p>
+                                </div>
+                            
+                            <div class="col-md-8 col-md-offset-2">
+                                <p>
+                                    Interactive map based on fuel preference, allowing you to quickly see which fuel stations are in your area
+                                </p>
+                            </div>
+                            <div class="col-md-8 col-md-offset-2">                    
+                                <button type="button" class="btn btn-info btn-lg" onclick="window.open('https://www.appsheet.com/start/4e8f848a-e6ff-4395-8d66-5292352dbf05?platform=desktop');">Demo</button>
+                            </div> 
+                    </div>  
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- Video Modals -->
+<style>
+  .embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto; }
+  .embed-container iframe,
+  .embed-container object,
+  .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+</style>
+
+<!-- 
+<div class="portfolio-modal modal fade" id="video-architect" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+  <div class="modal-content">
+    <div class="close-modal" data-dismiss="modal">
+      <div class="lr">
+        <div class="rl">
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+          <div class="modal-body">
+            <h2>Auto Insights Dashboard</h2>
+            <hr class="star-primary" style="background-color: #222; color: #222;">
+            <p>Use AID to <b>analyze</b> your car's stats in a few clicks! Just connect your OBD dongle to the car and phone and launch Android Auto to display on the Infotainment System of your car.
+            </p>
+            <div class="embed-container" style="margin-bottom: 40px">
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/ihxgydwkFgU" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+ -->
+
+<!-- Footer -->
+<footer class="text-center">
+    <div class="footer-above" style="background-color:#222">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col col-md-4">
+                    
+                </div>
+				
+                <div class="footer-col col-md-4">
+                    <h3 style="color:white">LOCATION</h3>
+
+                    <p><a style="color: white;" target="_blank" href="http://dmsl.cs.ucy.ac.cy/">Data Management Systems Laboratory</a><br>
+                        Department of Computer Science<br>
+                        University of Cyprus<br>
+                        P.O. Box 20537<br>
+                        1678 Nicosia, CYPRUS</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-below" style="background-color:#111">
+        <div class="container">
+            <div class="row">
+            </div>
+        </div>
+    </div>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','../www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-61313158-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</footer>
+
+<!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+<div class="scroll-top page-scroll">
+    <a class="btn btn-primary" href="#page-top">
+        <i class="fa fa-chevron-up" style="position: relative; bottom: 1px;"></i>
+    </a>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<!-- jQuery Version 1.11.0 -->
+<script src="js/jquery-1.11.0.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="js/bootstrap.min.js"></script>
+
+<!-- Plugin JavaScript -->
+<script src="js/jquery.easing.min.js"></script>
+<script src="js/classie.js"></script>
+<script src="js/cbpAnimatedHeader.js"></script>
+
+<!-- Contact Form JavaScript -->
+<script src="js/jqBootstrapValidation.js"></script>
+<script src="js/contact_me.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="js/freelancer.js"></script>
+
+</body>
+
+</html>
