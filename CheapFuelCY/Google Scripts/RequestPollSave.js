@@ -55,10 +55,10 @@ function sendSubmissionRequest(fuelType) {
       </MessageDetails>
       <SenderDetails>
         <IDAuthentication>
-          <SenderID>MarkosF2002</SenderID>
+          <SenderID>USERNAME</SenderID>
           <Authentication>
             <Method>clear</Method>
-            <Value>Menamojeff=1</Value>
+            <Value>PASSWORD</Value>
           </Authentication>
         </IDAuthentication>
       </SenderDetails>
